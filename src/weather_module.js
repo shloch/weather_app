@@ -18,7 +18,13 @@ const WeatherModule = (function theWeatherModuleFunction() {
         } else {
           fahrenheitDisplay(response.main.temp);
         }
-        flashInfo(response.name, response.weather.description, response.sys.country);
+        flashInfo(response.name,
+          response.weather[0].description,
+          response.sys.country,
+          response.wind.speed,
+          response.weather[0].icon,
+          response.name
+        );
 
       })
       .catch(function () {

@@ -2,16 +2,24 @@
 
 
 function changeWeatherImg(temperature) {
-  let bgImages = { cold: 'assets/cold-weather.jpg', warm: 'assets/warm-weather.jpg', hot: 'assets/hot-weather.jpg' }
+  let bgImages = {
+    cold: 'assets/cold-weather.jpg',
+    warm: 'assets/warm-weather.jpg',
+    very_warm: 'assets/very-warm-weather.jpg',
+    hot: 'assets/hot-weather.jpg',
+    default: 'assets/default.jpg'
+  }
   let b = document.querySelector('body');
   if (temperature < 16) {
     b.style.backgroundImage = 'url(' + bgImages.cold + ')';
-  } else if (temperature < 29) {
+  } else if (temperature < 25) {
     b.style.backgroundImage = 'url(' + bgImages.warm + ')';
-  } else if (temperature > 29) {
+  } else if (temperature < 33) {
+    b.style.backgroundImage = 'url(' + bgImages.very_warm + ')';
+  } else if (temperature > 33) {
     b.style.backgroundImage = 'url(' + bgImages.hot + ')';
   } else {
-    b.style.backgroundImage = 'url(' + bgImages.warm + ')';
+    b.style.backgroundImage = 'url(' + bgImages.default + ')';
   }
 }
 
@@ -28,18 +36,20 @@ function fahrenheitDisplay(temperature) {
 }
 
 function displayError(err) {
-  document.querySelector('body').style.backgroundImage = 'none';
+  document.querySelector('body').style.backgroundImage = 'url(assets/default.jpg)';
   document.querySelector('.info-1').innerHTML = '';
   document.querySelector('.info-2').innerHTML = '';
   const flash = document.querySelector('.flash');
   flash.innerHTML = err + '<br/><br/>';
 }
 
-function flashInfo(location, description, country) {
+function flashInfo(location, description, country, windSpeed, weatherIcon, city) {
   let flashMsg =
     `<h2> Location : ${location} </h2> <br/>
     Description : ${description} <br/>
-    Country : ${country}`;
+    Wind Speed : ${windSpeed} meter/second <br/>
+    City : ${city} (${country}) <br/>
+    <img src='http://openweathermap.org/img/w/${weatherIcon}.png' alt=''/>`;
   document.querySelector('.flash').innerHTML = flashMsg;
 }
 
