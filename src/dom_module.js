@@ -22,29 +22,32 @@ function changeWeatherImg(temperature) {
 
 function celciusDisplay(temperature) {
   document.querySelector('.flash').innerHTML = '';
-  const info1 = document.querySelector('.info-1');
+  const info1 = document.querySelector('#degree-celcius-val');
   info1.innerHTML = `${temperature}  &#8451 `;
+  document.querySelector('#temp-button-toggle-2').style.display = 'block';
 }
 
 function fahrenheitDisplay(temperature) {
   document.querySelector('.flash').innerHTML = '';
-  const info2 = document.querySelector('.info-2');
+  const info2 = document.querySelector('#degree-fahrenheit-val');
   info2.innerHTML = `${temperature}  &#8457 `;
 }
 
 function displayError(err) {
   document.querySelector('body').style.backgroundImage = 'url(assets/default.jpg)';
-  document.querySelector('.info-1').innerHTML = '';
-  document.querySelector('.info-2').innerHTML = '';
+  document.querySelector('#degree-celcius-val').innerHTML = '';
+  document.querySelector('#degree-fahrenheit-val').innerHTML = '';
+  document.querySelector('#temp-button-toggle-2').style.display = 'none';
+  document.querySelector('#temp-button-toggle-1').style.display = 'none';
   const flash = document.querySelector('.flash');
   flash.innerHTML = err;
 }
 
-function flashInfo(location, description, country, windSpeed, weatherIcon, city) {
+function flashInfo(location, description, country, windSpeed, weatherIcon) {
   const flashMsg = `<h2> Location : ${location} </h2> <br/>
     Description : ${description} <br/>
     Wind Speed : ${windSpeed} meter/second <br/>
-    City : ${city} (${country}) <br/>
+    City : ${location} (${country}) <br/>
     <img src='http://openweathermap.org/img/w/${weatherIcon}.png' alt=''/>`;
   document.querySelector('.flash').innerHTML = flashMsg;
 }
