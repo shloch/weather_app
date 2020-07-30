@@ -18,3 +18,9 @@ https://raw.githack.com/shloch/weather_app/weather_module/dist/index.html
 - Linkedin: [/in/shey-louis-chia](https://www.linkedin.com/in/shey-louis-chia)
 - Email: shloch2007@yahoo.fr
 
+## Acknowledgements
+- https://openweathermap.org/
+- http://javascript.info/
+- https://webpack.js.org
+- https://nodejs.org/
+
